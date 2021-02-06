@@ -1,18 +1,19 @@
 segment .text
-	global _ft_strcpy
-	extern _ft_strlen
+    global ft_strcpy
 
-_ft_strcpy:
-	push	rdi
-	mov		rdi, rsi
-	call	_ft_strlen
-	mov		rcx, rax
-	pop 	rdi
-	mov		rax, rdi
-	cld
-	rep		movsb
-	mov		BYTE [rdi], 0
-	jmp		exit
-
-exit:
-	ret
+ft_strcpy:                                    ; dst = rdi, src = rsi
+            xor        rcx, rcx                ; i = 0
+            xor        rdx, rdx                ; tmp = 0
+            cmp        rsi, 0                    ; !rsi
+            je        return
+            jmp        copy
+copy:
+            mov        dl, BYTE [rsi + rcx]
+            mov        BYTE [rdi + rcx], dl
+            cmp        dl, 0
+            je        return
+            inc        rcx
+            jmp        copy
+return:
+            mov        rax, rdi                ; return dst
+            ret

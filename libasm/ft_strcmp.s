@@ -1,17 +1,20 @@
 segment .text
-	global _ft_strcmp
-	extern _ft_strlen
+	global ft_strcmp
 
-_ft_strcmp:
-	push	rdi
-	mov		rdi, rsi
-	call	_ft_strlen
-	mov		rcx, rax
-	pop 	rdi
-	cld
-	rep		cmpsb
-	mov		BYTE [rdi], 0
-	jmp		exit
-
-exit:
-	ret
+ft_strcmp:									; dst = rdi, src = rsi
+			xor		rcx, rcx				; i = 0
+			xor		rdx, rdx				; tmp = 0
+			xor		rax, rax
+			jmp		compare
+compare:
+			mov     dl, BYTE [rsi + rcx]
+			cmp		dl, 0
+			je		return
+			cmp		dl, BYTE [rdi + rcx]
+			jne		return
+			inc		rcx
+			jmp		compare
+return:
+			mov		al, BYTE [rdi + rcx]			; return dst
+			sub		rax, rdx
+			ret
