@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 18:20:37 by adesvall          #+#    #+#             */
-/*   Updated: 2021/03/12 15:25:01 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/03/12 16:52:03 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ int		ft_atoi_with_overflow_check(const char *str, int *n)
 	sign = 1;
 	if (str[i] == '+' || str[i] == '-')
 	{
-		if (str[i] == '-')
+		if (str[i++] == '-')
 			sign = -1;
-		i++;
 	}
 	while (str[i])
 	{

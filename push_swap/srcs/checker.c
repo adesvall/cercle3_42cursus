@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 17:52:54 by adesvall          #+#    #+#             */
-/*   Updated: 2021/03/12 16:42:44 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/03/12 16:51:32 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int		is_instruction(char *str)
 	return (0);
 }
 
-t_list	*read_instructions()
+t_list	*read_instructions(void)
 {
 	t_list	*inst;
-	char 	*line;
+	char	*line;
 	int		gnl;
 
 	inst = NULL;

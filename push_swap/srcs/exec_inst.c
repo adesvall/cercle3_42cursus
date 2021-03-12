@@ -6,13 +6,13 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 12:30:18 by adesvall          #+#    #+#             */
-/*   Updated: 2021/03/12 16:43:10 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/03/12 16:50:39 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int check_sort(t_stk *a)
+int		check_sort(t_stk *a)
 {
 	while (a->next)
 	{

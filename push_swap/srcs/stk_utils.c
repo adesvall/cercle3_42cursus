@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 13:41:16 by adesvall          #+#    #+#             */
-/*   Updated: 2021/03/12 15:57:01 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/03/12 16:52:47 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_stklen(t_stk *stk)
 		i++;
 		stk = stk->next;
 	}
-	return i;
+	return (i);
 }
 
 void	ft_stkadd_top(t_stk **stk, t_stk *new)
