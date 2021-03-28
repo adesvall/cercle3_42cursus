@@ -6,23 +6,11 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 17:52:54 by adesvall          #+#    #+#             */
-/*   Updated: 2021/03/12 16:51:32 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/03/13 19:25:59 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stk(t_stk *a, char *id)
-{
-	printf("Stack %s :\n", id);
-	if (!a)
-		printf("Empty\n");
-	while (a)
-	{
-		printf("= %d\n", a->content);
-		a = a->next;
-	}
-}
 
 void	print_inst(t_list *inst)
 {

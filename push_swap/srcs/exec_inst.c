@@ -6,26 +6,11 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 12:30:18 by adesvall          #+#    #+#             */
-/*   Updated: 2021/03/12 16:50:39 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/03/14 19:01:28 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int		check_sort(t_stk *a)
-{
-	while (a->next)
-	{
-		if (a->content > a->next->content)
-		{
-			printf("KO\n");
-			return (0);
-		}
-		a = a->next;
-	}
-	printf("OK\n");
-	return (1);
-}
 
 void	apply_inst(t_stk **a, t_stk **b, char *str)
 {
@@ -60,11 +45,6 @@ void	exec_inst(t_stk **a, t_list *inst)
 		printf("\n");
 		inst = inst->next;
 	}
-	if (b)
-	{
-		printf("KO\n");
-		ft_stkclear(&b);
-	}
-	else
-		check_sort(*a);
+	printf((!b && check_sort(*a)) ? "OK\n" : "KO\n");
+	ft_stkclear(&b);
 }

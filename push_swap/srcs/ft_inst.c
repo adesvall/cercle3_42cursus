@@ -6,11 +6,22 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 12:43:34 by adesvall          #+#    #+#             */
-/*   Updated: 2021/03/12 16:52:53 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/03/14 19:00:46 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int		check_sort(t_stk *a)
+{
+	while (a->next)
+	{
+		if (a->content > a->next->content)
+			return (0);
+		a = a->next;
+	}
+	return (1);
+}
 
 void	ft_swap(t_stk *a)
 {
@@ -21,6 +32,9 @@ void	ft_swap(t_stk *a)
 		tmp = a->content;
 		a->content = a->next->content;
 		a->next->content = tmp;
+		tmp = a->target;
+		a->target = a->next->target;
+		a->next->target = tmp;
 	}
 }
 
