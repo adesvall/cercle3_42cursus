@@ -1,11 +1,11 @@
 segment .text
-	global ft_write
+	global ft_read
 	extern __errno_location
 
-; ft_write (rdi, rsi, rdx)
-ft_write:
-	mov rax, 1		; set rax to write
-    syscall					; call rax (write)
+; ft_read (rdi, rsi, rdx)
+ft_read:
+	mov rax, 0		; set rax to read
+    syscall					; call rax (read)
 	cmp rax, 0
 		jl exit_error
 	ret
