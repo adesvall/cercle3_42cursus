@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 19:21:28 by adesvall          #+#    #+#             */
-/*   Updated: 2021/03/25 12:23:57 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/04/07 18:54:15 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,18 +143,21 @@ void	save_res(int *a, int sep, t_info *info, int step)
 	info->sep_res = sep;
 }
 
-int	solve_inst(int *a, int sep, int step, int prevdist, t_info *info, int maxstep)
+int	solve_inst(int *a, int sep, int step, t_info *info, int maxstep)
 {
 	int i;
 	int	distance;
+	int g;
 
 	if (check_sort(a, sep, info->len))
 	{
-		//save_res(a, sep, info, step);
+		save_res(a, sep, info, step);
 		return (1);
 	}
 	if (step >= maxstep)
 	{
+		if (maxstep < MAX_LEAP - 1)
+			return (0);
 		distance = dist(info->sorted, a, sep, info->len);
 		if (distance < info->best_dist)
 		{
@@ -166,19 +169,18 @@ int	solve_inst(int *a, int sep, int step, int prevdist, t_info *info, int maxste
 	i = 0;
 	while (i < 8)
 	{
-		if (step)
+		if (step && !ft_strcmp(info->invl[i], info->inst[step - 1]))
 		{
-			if (!ft_strcmp(info->invl[i], info->inst[step - 1]))
-			{
-				i++;
-				continue;
-			}
+			i++;
+			continue;
 		}
-		if ((i < 6) ? info->fonct[i](a, sep, info->len) : info->fonct[i](&sep, info->len))
+		g = (i < 6) ? info->fonct[i](a, sep, info->len) : info->fonct[i](&sep, info->len);
+		if (g)
 		{
 			info->inst[step] = info->list[i];
-			if (solve_inst(a, sep, step + 1, 0, info, maxstep))
+			if (solve_inst(a, sep, step + 1, info, maxstep))
 				return (1);
+			info->inst[step] = NULL;
 			if (i < 6)
 				info->invf[i](a, sep, info->len);
 			else
@@ -193,7 +195,7 @@ int	solve_inst(int *a, int sep, int step, int prevdist, t_info *info, int maxste
 
 int	main(int argc, char **argv)
 {
-	int a[LEN] = {1, 3, 2, 4, 6, 8, 7, 5};
+	int a[LEN] = {5, 3, 2, 8, 6, 4, 7, 1};
 	t_info	info;
 
 	info.len = LEN;
@@ -219,13 +221,14 @@ int	main(int argc, char **argv)
 	while (!is_sorted)
 	{
 		int maxstep = 1;
-		while (maxstep < 8 && !is_sorted)
+		while (maxstep < MAX_LEAP && !is_sorted)
 		{
 			info.best_dist = __INT32_MAX__;
-			is_sorted = solve_inst(a, info.sep_res, 0, 0, &info, maxstep);
-			printf("NOTHING FOR %d\n", maxstep);
+			is_sorted = solve_inst(a, info.sep_res, 0, &info, maxstep);
+			// printf("NOTHING FOR %d\n", maxstep);
 			maxstep++;
 		}
+		printf("--- %d += %d ---\n", info.step_res, maxstep-1);
 		info.step_res += maxstep-1;
 		copy_tab(a, info.tab_res, info.len);
 		int i =-1;

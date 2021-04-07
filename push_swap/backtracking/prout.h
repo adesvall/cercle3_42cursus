@@ -6,12 +6,14 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 20:45:32 by adesvall          #+#    #+#             */
-/*   Updated: 2021/03/21 18:42:05 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/04/07 19:00:00 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#define MAX_LEAP 9
 
 typedef struct	s_info
 {
