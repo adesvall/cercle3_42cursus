@@ -18,7 +18,7 @@
 # include "libft/libft.h"
 # include "srcs/get_next_line/get_next_line.h"
 
-# define MAX_LEAP 7
+# define MAX_LEAP 5
 
 typedef struct	s_info
 {

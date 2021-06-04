@@ -48,7 +48,6 @@ int		is_valid(char *str, int *a, int index, int *n)
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
-	// printf("%s\n", str);
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
@@ -85,7 +84,6 @@ int	*argv_to_tab(int argc, char **argv)
 			return (NULL);
 		}
 		a[i] = n;
-		printf("%d\n", n);
 		i++;
 	}
 	return (a);

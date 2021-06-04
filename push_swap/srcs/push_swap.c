@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 		printf("Error\n");
 		return (1);
 	}
-	print_tab(a, 0, argc - 1);
+	// print_tab(a, 0, argc - 1);
 
 	info.len = argc - 1;
 	info.tab_res = malloc(info.len * sizeof(int));
@@ -40,18 +40,18 @@ int	main(int argc, char **argv)
 	info.special = (char*[3]){"ss", "rr", "rrr"};
 	info.invspecial = (char*[3]){info.special[0], info.special[2], info.special[1]};
 	
-	info.inst = malloc(100 * sizeof(char*));
-	info.inst_res = malloc(100 * sizeof(char*));
-	for (int i=0; i<100; i++)
+	info.inst = malloc(500 * sizeof(char*));
+	info.inst_res = malloc(500 * sizeof(char*));
+	for (int i=0; i<500; i++)
 	{
 		info.inst[i] = 0;
 		info.inst_res[i] = 0;
 	}
 
-	int original_dist = insert_sort(a, 0, info.len);
+	//int original_dist = insert_sort(a, 0, info.len);
 
 	int is_sorted = 0;
-	while (!is_sorted && info.step_res < 50)
+	while (!is_sorted && info.step_res < 500)
 	{
 		int maxstep = 1;
 		while (maxstep < MAX_LEAP && !is_sorted)
@@ -61,18 +61,19 @@ int	main(int argc, char **argv)
 			// printf("NOTHING FOR %d\n", maxstep);
 			maxstep++;
 		}
-		printf("--- %d += %d ---\n", info.step_res, maxstep-1);
+		//printf("--- %d += %d ---\n", info.step_res, maxstep-1);
 		info.step_res += maxstep-1;
 		copy_tab(a, info.tab_res, info.len);
-		print_tab(info.tab_res, info.sep_res, info.len);
+		//print_tab(info.tab_res, info.sep_res, info.len);
 	}
 	int i = 0;
 	while (i < info.step_res)
 	{
-		printf("%d : %s\n", i, info.inst_res[i]);
+		// printf("%d : %s\n", i, info.inst_res[i]);
+		printf("%s\n", info.inst_res[i]);
 		i++;
 	}
-	printf("original dist : %d\n", original_dist);
+	//printf("original dist : %d\n", original_dist);
 	
 	free(info.inst);
 	free(info.inst_res);
