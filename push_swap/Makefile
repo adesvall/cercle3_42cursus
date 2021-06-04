@@ -10,7 +10,7 @@ SRCSS_CH	= ${addprefix srcs/, ${SRCS_CH}}
 
 OBJS_CH		= ${SRCSS_CH:.c=.o}
 
-SRCS_PS		= push_swap.c argv_to_stk.c ft_inst.c stk_utils.c
+SRCS_PS		= push_swap.c argv_to_tab.c ft_inst.c backtracking.c insert_sort.c
 
 SRCSS_PS	= ${addprefix srcs/, ${SRCS_PS}}
 
@@ -18,7 +18,7 @@ OBJS_PS		= ${SRCSS_PS:.c=.o}
 
 CFLAGS		= -Wall -Wextra -Werror -fsanitize=address -I.
 
-all:		${NAME_CH} ${NAME_PS}
+all:		${NAME_PS}
 
 $(NAME_CH):	${OBJS_CH}
 			make -C libft bonus

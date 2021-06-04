@@ -6,40 +6,56 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 18:01:45 by adesvall          #+#    #+#             */
-/*   Updated: 2021/03/14 19:00:57 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/05/16 14:58:40 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include "libft/libft.h"
-#include "srcs/get_next_line/get_next_line.h"
+# include <stdlib.h>
+# include <stdio.h>
+# include "libft/libft.h"
+# include "srcs/get_next_line/get_next_line.h"
 
-typedef struct	s_stk
+# define MAX_LEAP 7
+
+typedef struct	s_info
 {
-	int				content;
-	int				target;
-	struct s_stk	*next;
-}				t_stk;
+	int	 len;
+	int	*sorted;
+	int (**fonct)();
+	int (**invf)();
+	char **list;
+	char **invl;
+	char **special;
+	char **invspecial;
+	char **inst;
+	int	best_dist;
+	char **inst_res;
+	int *tab_res;
+	int	sep_res;
+	int step_res;
+}				t_info;
 
-t_stk	*argv_to_stk(int argc, char **argv);
-void	exec_inst(t_stk **a, t_list *inst);
+int		*argv_to_tab(int argc, char **argv);
+void	exec_inst(int *a, t_list *inst);
 
-t_stk	*ft_stknew(int content);
-int		ft_stklen(t_stk *stk);
-void	ft_stkadd_top(t_stk **stk, t_stk *new);
-void	ft_stkadd_back(t_stk **stk, t_stk *new);
-void	ft_stkclear(t_stk **stk);
-t_stk	*ft_stkget_last(t_stk *a);
-void	print_stk(t_stk *a, char *id);
+int		check_sort(int *a, int sep, int len);
+int		ft_swap_a(int *a, int sep, int len);
+int		ft_swap_b(int *a, int sep, int len);
+int		ft_push_a(int *sep, int len);
+int		ft_push_b(int *sep, int len);
+int		ft_rotate_a(int *a, int sep, int len);
+int		ft_rotate_b(int *a, int sep, int len);
+int		ft_reverse_rotate_a(int *a, int sep, int len);
+int		ft_reverse_rotate_b(int *a, int sep, int len);
+void	copy_tab(int *a, int *b, int len);
+void	print_tab(int *a, int sep, int len);
+int 	get_index(int *t, int n, int len);
 
-int		check_sort(t_stk *a);
-void	ft_swap(t_stk *a);
-void	ft_push(t_stk **a, t_stk **b);
-void	ft_rotate(t_stk **a);
-void	ft_reverse_rotate(t_stk **a);
+int 	insert_sort(int *t, int *a, int sep, int len);
+
+
 
 #endif

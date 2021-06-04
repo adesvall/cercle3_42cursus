@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argv_to_stk.c                                      :+:      :+:    :+:   */
+/*   argv_to_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 18:20:37 by adesvall          #+#    #+#             */
-/*   Updated: 2021/03/12 16:52:03 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/05/16 15:17:13 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_atoi_with_overflow_check(const char *str, int *n)
 	return (1);
 }
 
-int		is_valid(char *str, t_stk *a, int *n)
+int		is_valid(char *str, int *a, int index, int *n)
 {
 	int	i;
 
@@ -56,31 +56,32 @@ int		is_valid(char *str, t_stk *a, int *n)
 	}
 	if (!ft_atoi_with_overflow_check(str, n))
 		return (0);
-	while (a)
+	i = 0;
+	while (i < index)
 	{
-		if (a->content == *n)
+		if (a[i] == *n)
 			return (0);
-		a = a->next;
+		i++;
 	}
 	return (1);
 }
 
-t_stk	*argv_to_stk(int argc, char **argv)
+int	*argv_to_tab(int argc, char **argv)
 {
-	t_stk	*a;
+	int		*a;
 	int		i;
 	int		n;
 
-	a = NULL;
-	i = 1;
-	while (i < argc)
+	a = malloc(sizeof(int) * (argc-1));
+	i = 0;
+	while (i < argc - 1)
 	{
-		if (!is_valid(argv[i], a, &n))
+		if (!is_valid(argv[i], a, i, &n))
 		{
-			ft_stkclear(&a);
+			free(a);
 			return (NULL);
 		}
-		ft_stkadd_back(&a, ft_stknew(n));
+		a[i] = n;
 		i++;
 	}
 	return (a);
