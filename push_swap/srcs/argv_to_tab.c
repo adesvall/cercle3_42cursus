@@ -48,6 +48,7 @@ int		is_valid(char *str, int *a, int index, int *n)
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
+	// printf("%s\n", str);
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
@@ -72,16 +73,19 @@ int	*argv_to_tab(int argc, char **argv)
 	int		i;
 	int		n;
 
-	a = malloc(sizeof(int) * (argc-1));
+	a = malloc(sizeof(int) * (argc - 1));
+	if (a == NULL)
+		return (NULL);
 	i = 0;
 	while (i < argc - 1)
 	{
-		if (!is_valid(argv[i], a, i, &n))
+		if (!is_valid(argv[i + 1], a, i, &n))
 		{
 			free(a);
 			return (NULL);
 		}
 		a[i] = n;
+		printf("%d\n", n);
 		i++;
 	}
 	return (a);

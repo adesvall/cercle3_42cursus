@@ -32,18 +32,20 @@ int correct_insertsort(int *t, int sep, int len)
 	return (1);
 }
 
-int insert_sort(int *t, int *a, int sep, int len)
+int insert_sort(int *a, int sep, int len)
 {
 	int min;
 	int pos;
 	int i;
 	int count;
+	int *t;
 
 	count = 0;
 
-	copy_tab(t, a, len);
-	if (check_sort(t, 0, len))
+	if (check_sort(a, 0, len))
 		return (sep);
+	t = malloc(len * sizeof(int));
+	copy_tab(t, a, len);
 	while (!correct_insertsort(t, sep, len))
 	{
 		ft_push_a(&sep, len);
@@ -77,7 +79,10 @@ int insert_sort(int *t, int *a, int sep, int len)
 		count++;
 	}
 	if (check_sort(t, 0, len))
+	{
+		free(t);
 		return (count + sep);
+	}
 	count++;
 	if (len - sep == 3)
 	{
@@ -86,6 +91,7 @@ int insert_sort(int *t, int *a, int sep, int len)
 			count++;
 	}
 	count+=sep;
+	free(t);
 	return (count);
 	// if ()
 	// {

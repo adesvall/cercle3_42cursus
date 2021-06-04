@@ -23,7 +23,6 @@
 typedef struct	s_info
 {
 	int	 len;
-	int	*sorted;
 	int (**fonct)();
 	int (**invf)();
 	char **list;
@@ -54,7 +53,8 @@ void	copy_tab(int *a, int *b, int len);
 void	print_tab(int *a, int sep, int len);
 int 	get_index(int *t, int n, int len);
 
-int 	insert_sort(int *t, int *a, int sep, int len);
+int		solve_inst(int *a, int sep, int step, t_info *info, int maxstep);
+int 	insert_sort(int *a, int sep, int len);
 
 
 
