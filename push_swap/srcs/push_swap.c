@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 17:47:43 by adesvall          #+#    #+#             */
-/*   Updated: 2021/06/07 22:46:06 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/06/08 00:44:30 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ int	main(int argc, char **argv)
 
 	sorted = create_sorted(a, argc - 1);
 	sort_500(a, argc - 1, sorted);
+
+	// print_tab(a, 0, argc - 1);
+	
 	free(a);
 	free(sorted);
 }

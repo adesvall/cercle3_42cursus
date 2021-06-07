@@ -6,11 +6,11 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 20:41:51 by adesvall          #+#    #+#             */
-/*   Updated: 2021/06/07 22:40:33 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/06/08 00:47:46 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define MORCEAUX 3
+#define MORCEAUX 2
 #include "push_swap.h"
 
 int		abs(int	n)
@@ -54,29 +54,37 @@ int		min_finder(int *a, int sep)
 
 int		closest_finder(int min_index, int max_index, int sep)
 {
-	if (abs(min_index - sep / 2) < abs(max_index - sep / 2))
+	if (abs(2 * min_index - sep) < abs(2 * max_index - sep)) // verifier formule
 		return (max_index);
 	return (min_index);
 }
 
-void	find_closest_and_push_it_to_a(int *a, int *sep, int len)
+int		find_closest_and_push_it_to_a(int *a, int *sep, int len)
 {
 	int closest;
 	int	i;
+	int min_rotations;
 
-	i = 0;
+	min_rotations = 0;
 	closest = closest_finder(min_finder(a, *sep), max_finder(a, *sep), *sep);
-	if (closest > *sep / 2)
+	i = 0;
+	if (closest >= *sep / 2)
 	{
-		while (i++ < *sep - closest)
-			ft_reverse_rotate_b(a, *sep, len);
+		while (i++ < *sep - 1 - closest)
+			ft_rotate_b(a, *sep, len);
 	}
 	else
 	{
-		while (i++ < closest)
-			ft_rotate_b(a, *sep, len);
+		while (i++ < closest + 1)
+			ft_reverse_rotate_b(a, *sep, len);
 	}
 	ft_push_a(sep, len);
+	if (*sep > 0 && a[*sep] < a[*sep - 1])
+	{
+		ft_rotate_a(a, *sep, len);
+		min_rotations++;
+	}
+	return (min_rotations);
 }
 
 void	sort_500(int *a, int len, int *sorted)
@@ -85,13 +93,15 @@ void	sort_500(int *a, int len, int *sorted)
 	int i;
 	int sep;
 	int longueurdunmorceau = len / MORCEAUX + (len % MORCEAUX != 0);
+	int min_rotation;
 
 	sep = 0;
 	morceau = 0;
+	min_rotation = 0;
 	while (morceau < MORCEAUX)
 	{
 		i = 0;
-		while (i < len)
+		while (i < len - min_rotation)
 		{
 			if (a[sep] >= sorted[(MORCEAUX - morceau - 1) * longueurdunmorceau]
 				&& (morceau == 0 || a[sep] < sorted[(MORCEAUX - morceau) * longueurdunmorceau]))
@@ -100,10 +110,15 @@ void	sort_500(int *a, int len, int *sorted)
 				ft_rotate_a(a, sep, len);
 			i++;
 		}
+		// print_tab(a, sep, len);
+		min_rotation = 0;
 		while (sep > 0)
-			find_closest_and_push_it_to_a(a, &sep, len);
+			min_rotation += find_closest_and_push_it_to_a(a, &sep, len);
+		// print_tab(a, sep, len);
 		morceau++;
 	}
+	while (a[len - 1] < a[0])
+		ft_reverse_rotate_a(a, sep, len);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 19:21:28 by adesvall          #+#    #+#             */
-/*   Updated: 2021/06/07 22:22:48 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/06/07 23:51:08 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_tab(int *a, int sep, int len)
 {
 	int i;
 
-	printf("Stack status :\n");
+	printf("\nStack status :\n");
 	i = 0;
 	while (i < len)
 	{
@@ -25,6 +25,7 @@ void	print_tab(int *a, int sep, int len)
 		printf("%d\n", a[i]);
 		i++;
 	}
+	printf("\n");
 }
 
 int 	get_index(int *t, int n, int len)
