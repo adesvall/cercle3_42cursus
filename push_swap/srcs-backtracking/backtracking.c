@@ -6,11 +6,23 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 19:21:28 by adesvall          #+#    #+#             */
-/*   Updated: 2021/06/07 22:22:48 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/05/16 15:12:18 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	copy_tab(int *a, int *b, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len)
+	{
+		a[i] = b[i];
+		i++;
+	}
+}
 
 void	print_tab(int *a, int sep, int len)
 {
@@ -69,6 +81,13 @@ void	sort_tab(int *t, int len)
 		else
 			i++;
 	}
+}
+
+int		abs(int	n)
+{
+	if (n >= 0)
+		return (n);
+	return (-n);
 }
 
 int 	min(int a, int b, int c)

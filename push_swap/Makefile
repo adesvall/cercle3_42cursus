@@ -10,7 +10,7 @@ SRCSS_CH	= ${addprefix srcs/, ${SRCS_CH}}
 
 OBJS_CH		= ${SRCSS_CH:.c=.o}
 
-SRCS_PS		= push_swap.c argv_to_tab.c ft_inst.c backtracking.c insert_sort.c
+SRCS_PS		= push_swap.c argv_to_tab.c ft_inst.c backtracking.c insert_sort.c sort_500.c
 
 SRCSS_PS	= ${addprefix srcs/, ${SRCS_PS}}
 

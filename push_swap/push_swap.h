@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 18:01:45 by adesvall          #+#    #+#             */
-/*   Updated: 2021/05/16 14:58:40 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/06/07 22:13:40 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int		ft_reverse_rotate_b(int *a, int sep, int len);
 void	copy_tab(int *a, int *b, int len);
 void	print_tab(int *a, int sep, int len);
 int 	get_index(int *t, int n, int len);
+
+void	sort_500(int *a, int len, int *sorted);
 
 int		solve_inst(int *a, int sep, int step, t_info *info, int maxstep);
 int 	insert_sort(int *a, int sep, int len);

@@ -6,11 +6,9 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 12:43:34 by adesvall          #+#    #+#             */
-/*   Updated: 2021/06/07 22:26:53 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/05/16 15:10:40 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "push_swap.h"
 
 int		check_sort(int *a, int sep, int len)
 {
@@ -37,7 +35,6 @@ int	ft_swap_a(int *a, int sep, int len)
 		tmp = a[sep];
 		a[sep] = a[sep + 1];
 		a[sep + 1] = tmp;
-		printf("sa\n");
 		return (1);
 	}
 	return (0);
@@ -53,7 +50,6 @@ int	ft_swap_b(int *a, int sep, int len)
 		tmp = a[sep - 1];
 		a[sep - 1] = a[sep - 2];
 		a[sep - 2] = tmp;
-		printf("sb\n");
 		return (1);
 	}
 	return (0);
@@ -65,7 +61,6 @@ int	ft_push_a(int *sep, int len)
 	if (*sep == 0)
 		return (0);
 	(*sep)--;
-	printf("pa\n");
 	return (1);
 }
 
@@ -74,7 +69,6 @@ int	ft_push_b(int *sep, int len)
 	if (*sep == len - 1)
 		return (0);
 	(*sep)++;
-	printf("pb\n");
 	return (1);
 }
 
@@ -93,7 +87,6 @@ int	ft_rotate_a(int *a, int sep, int len)
 		i++;
 	}
 	a[i] = tmp;
-	printf("ra\n");
 	return (1);
 }
 
@@ -113,7 +106,6 @@ int	ft_rotate_b(int *a, int sep, int len)
 		i--;
 	}
 	a[i] = tmp;
-	printf("rb\n");
 	return (1);
 }
 
@@ -132,7 +124,6 @@ int	ft_reverse_rotate_a(int *a, int sep, int len)
 		i--;
 	}
 	a[i] = tmp;
-	printf("rra\n");
 	return (1);
 }
 
@@ -152,6 +143,5 @@ int	ft_reverse_rotate_b(int *a, int sep, int len)
 		i++;
 	}
 	a[i] = tmp;
-	printf("rrb\n");
 	return (1);
 }
