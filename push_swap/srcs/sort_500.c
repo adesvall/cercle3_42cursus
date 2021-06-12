@@ -6,11 +6,11 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 20:41:51 by adesvall          #+#    #+#             */
-/*   Updated: 2021/06/08 00:47:46 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/06/09 16:51:28 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define MORCEAUX 2
+#define mX 12
 #include "push_swap.h"
 
 int		abs(int	n)
@@ -89,22 +89,34 @@ int		find_closest_and_push_it_to_a(int *a, int *sep, int len)
 
 void	sort_500(int *a, int len, int *sorted)
 {
-	int morceau;
+	int m;
 	int i;
 	int sep;
-	int longueurdunmorceau = len / MORCEAUX + (len % MORCEAUX != 0);
+	int longueurdunmorceau = len / mX + (len % mX != 0);
 	int min_rotation;
 
 	sep = 0;
-	morceau = 0;
+	m = 0;
 	min_rotation = 0;
-	while (morceau < MORCEAUX)
+	while (m < mX)
 	{
+		//rajouter opti de si ccest le premier morceau et si cest le dernier
+
+		if (min_rotation + 2 * (mX-m) * longueurdunmorceau <= len - min_rotation)
+		{
+			i=0;
+			while (i < min_rotation + (mX-m)*longueurdunmorceau)
+			{
+				ft_reverse_rotate_a(a, sep, len);
+				i++;
+			}
+			min_rotation = len - (mX-m)*longueurdunmorceau;
+		}
 		i = 0;
 		while (i < len - min_rotation)
 		{
-			if (a[sep] >= sorted[(MORCEAUX - morceau - 1) * longueurdunmorceau]
-				&& (morceau == 0 || a[sep] < sorted[(MORCEAUX - morceau) * longueurdunmorceau]))
+			if (a[sep] >= sorted[(mX - m - 1) * longueurdunmorceau]
+				&& (m == 0 || a[sep] < sorted[(mX - m) * longueurdunmorceau]))
 				ft_push_b(&sep, len);
 			else
 				ft_rotate_a(a, sep, len);
@@ -115,7 +127,7 @@ void	sort_500(int *a, int len, int *sorted)
 		while (sep > 0)
 			min_rotation += find_closest_and_push_it_to_a(a, &sep, len);
 		// print_tab(a, sep, len);
-		morceau++;
+		m++;
 	}
 	while (a[len - 1] < a[0])
 		ft_reverse_rotate_a(a, sep, len);
