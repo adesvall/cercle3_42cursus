@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 17:47:43 by adesvall          #+#    #+#             */
-/*   Updated: 2021/06/08 00:44:30 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/06/17 00:31:17 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 	int		*a;
 	int		*sorted;
 
-	if (argc == 1)
+	if (argc - 1 < 2)
 		return (1);
 	a = argv_to_tab(argc, argv);
 	if (a == NULL)
@@ -66,12 +66,18 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	// print_tab(a, 0, argc - 1);
-
-	sorted = create_sorted(a, argc - 1);
-	sort_500(a, argc - 1, sorted);
-
+	if (argc - 1 <= 3)
+		sort_3(a, argc - 1);
+	else
+	{
+		sorted = create_sorted(a, argc - 1);
+		if (argc - 1 <= 5)
+			sort_5(a, argc - 1, sorted);
+		else
+			sort_500(a, argc - 1, sorted);
+		free(sorted);
+	}
 	// print_tab(a, 0, argc - 1);
 	
 	free(a);
-	free(sorted);
 }

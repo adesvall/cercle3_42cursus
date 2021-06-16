@@ -6,11 +6,11 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 20:41:51 by adesvall          #+#    #+#             */
-/*   Updated: 2021/06/09 16:51:28 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/06/16 23:54:52 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define mX 12
+#define mX 2
 #include "push_swap.h"
 
 int		abs(int	n)
