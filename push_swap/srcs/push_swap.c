@@ -73,11 +73,11 @@ int	main(int argc, char **argv)
 		sorted = create_sorted(a, argc - 1);
 		if (argc - 1 <= 5)
 			sort_5(a, argc - 1, sorted);
+		else if (argc - 1 <= 100)
+			sort_morceaux(a, argc - 1, 4, sorted);
 		else
-			sort_500(a, argc - 1, sorted);
+			sort_morceaux(a, argc - 1, 10, sorted);
 		free(sorted);
 	}
-	// print_tab(a, 0, argc - 1);
-	
 	free(a);
 }

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define mX 2
 #include "push_swap.h"
 
 int		abs(int	n)
@@ -18,38 +17,6 @@ int		abs(int	n)
 	if (n >= 0)
 		return (n);
 	return (-n);
-}
-
-int		max_finder(int *a, int sep)
-{
-	int		i;
-	int		max;
-
-	i = 0;
-	max = 0;
-	while (i < sep)
-	{
-		if (a[i] > a[max])
-			max = i;
-		i++;
-	}
-	return (max);
-}
-
-int		min_finder(int *a, int sep)
-{
-	int		i;
-	int		min;
-
-	i = 0;
-	min = 0;
-	while (i < sep)
-	{
-		if (a[i] < a[min])
-			min = i;
-		i++;
-	}
-	return (min);
 }
 
 int		closest_finder(int min_index, int max_index, int sep)
@@ -87,17 +54,18 @@ int		find_closest_and_push_it_to_a(int *a, int *sep, int len)
 	return (min_rotations);
 }
 
-void	sort_500(int *a, int len, int *sorted)
+void	sort_morceaux(int *a, int len, int mX, int *sorted)
 {
 	int m;
 	int i;
 	int sep;
-	int longueurdunmorceau = len / mX + (len % mX != 0);
+	int longueurdunmorceau;
 	int min_rotation;
 
 	sep = 0;
 	m = 0;
 	min_rotation = 0;
+	longueurdunmorceau = len / mX + (len % mX != 0);
 	while (m < mX)
 	{
 		//rajouter opti de si ccest le premier morceau et si cest le dernier
@@ -134,7 +102,7 @@ void	sort_500(int *a, int len, int *sorted)
 }
 
 /*
-1. mettre tout les plus gros dans b
-2. les remettre dans a de facon a ce quil soit triée
-3. repeter l'operation pour toute les parties
+* 1. mettre tout les plus gros dans b
+* 2. les remettre dans a de facon a ce quil soit triée
+* 3. repeter l'operation pour toute les parties
 */
