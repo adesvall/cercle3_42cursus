@@ -49,26 +49,7 @@ int		is_instruction(char *str)
 	return (0);
 }
 
-t_list	*read_instructions(void)
-{
-	t_list	*inst;
-	char	*line;
-	int		gnl;
-
-	inst = NULL;
-	gnl = 1;
-	while (gnl == 1)
-	{
-		gnl = get_next_line(0, &line);
-		ft_lstadd_back(&inst, ft_lstnew(line));
-		if (line[0] && !is_instruction(line))
-		{
-			ft_lstclear(&inst, free);
-			return (NULL);
-		}
-	}
-	return (inst);
-}
+s
 
 int		main(int argc, char **argv)
 {
