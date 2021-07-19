@@ -4,8 +4,11 @@
 #ifndef PIPEX_H
 #define PIPEX_H
 
+#include <stdlib.h>
+#include <fcntl.h>
 #include <unistd.h>
-#include "libft.h"
+#include <stdio.h>
+//#include "libft.h"
 
 typedef struct s_pipex
 {
@@ -15,5 +18,8 @@ typedef struct s_pipex
     char **cmd2;
     char *outfile;
 }               t_pipex;
+
+int     ft_exit(int code, char *str);
+char    *get_path(char **env);
 
 #endif

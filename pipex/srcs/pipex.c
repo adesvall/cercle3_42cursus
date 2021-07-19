@@ -1,21 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/19 14:01:31 by adesvall          #+#    #+#             */
+/*   Updated: 2021/07/19 15:48:10 by adesvall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "pipex.h"
 
-int		inputfile(int fdpid, char *path, t_pip *p, char **env)
+int		inputfile(int fdpid, char *path, t_pipex *p, char **env)
 {
 	int		fd;
 
-	if ((fd = open(p->file1, O_RDONLY)) == -1)
-		ft_panic("Can't read file.\n");
+	fd = open(p->infile, O_RDONLY);
+	if (fd == -1)
+		ft_exit(-2, "Can't read file 1.\n");
 	dup2(fd, STDIN_FILENO);
 	close(fd);
 	dup2(fdpid, STDOUT_FILENO);
 	close(fdpid);
 	if (execve(path, p->cmd1, env) == -1)
-		ft_panic("ERROR: can't apply first command.\n");
+		ft_exit(-3, "ERROR: can't apply first command.\n");
 	return (0);
 }
 
+int		outputfile(int fdpid, char *path, t_pipex *p, char **env)
+{
+	int		fd;
+
+	fd = open(p->outfile, O_WRONLY);
+	if (fd == -1)
+		ft_exit(-2, "Can't read file 2.\n");
+	dup2(fd, STDIN_FILENO);
+	close(fd);
+	dup2(fdpid, STDOUT_FILENO);
+	close(fdpid);
+	if (execve(path, p->cmd1, env) == -1)
+		ft_exit(-3, "ERROR: can't apply first command.\n");
+	return (0);
+}
+/*
 void    pipex(t_pipex p, char **env)
 {
 	pid_t	pid;
@@ -23,7 +51,14 @@ void    pipex(t_pipex p, char **env)
 	char	*curr;
 
 	if (pipe(pipefd))
+		ft_exit(-4, "ERROR: can't create pipe");
+	pid = fork();
+	if (pid == 0)
+	{
+		
+	}
+	
 
-}
+}*/
 
-https://github.com/SashaPo/Pipex
+// https://github.com/SashaPo/Pipex
