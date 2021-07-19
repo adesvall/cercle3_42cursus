@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 14:01:23 by adesvall          #+#    #+#             */
-/*   Updated: 2021/07/19 15:48:58 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/07/19 17:00:02 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ int	main(int argc, char **argv)
 	p.cmd2 = ft_split(argv[3], ' ');
 	p.path = get_path(environ);
 	if (!p.path)
-		ft_exit(-1, "error: can't get PATH environment variable");
-	int fd = open("file1", O_WRONLY);
-	dup2(fd, 0);
-	printf("%s\n", p.path);
-	close(fd);
+		ft_exit(-1, "ERROR: can't get PATH environment variable");
+	pipex(&p, environ);
 }

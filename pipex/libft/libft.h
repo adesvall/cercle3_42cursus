@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 20:28:56 by adesvall          #+#    #+#             */
-/*   Updated: 2020/11/22 21:58:16 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/07/19 16:45:48 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 char			*ft_itoa(int n);
 int				ft_count_chr(const char *s, char c);
+char			**ft_abort(char **res);
 char			**ft_split(const char *s, char c);
 t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **alst, t_list *new);

@@ -8,20 +8,22 @@ CFLAGS		= -Wall -Wextra -Werror -I. -Ilibft
 
 all:		${NAME}
 
-$(NAME):	${OBJS} libft.a
+$(NAME):	${OBJS} libft/libft.a
 			gcc ${CFLAGS} -o ${NAME} ${OBJS} libft/libft.a
 
 .c.o:
 			gcc ${CFLAGS} -c $< -o ${<:.c=.o}
 
-libft.a:
+libft/libft.a:
 			make -C libft
 
 clean:
 			rm -f ${OBJS}
+			make -C libft clean
 
 fclean:		clean
 			rm -f ${NAME}
+			rm -rf libft/libft.a
 
 re:			fclean all
 

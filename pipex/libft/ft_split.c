@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 14:40:18 by adesvall          #+#    #+#             */
-/*   Updated: 2020/11/22 19:22:19 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/07/19 16:44:56 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	*ft_strdup_chr(const char *str, char c)
 	return (res);
 }
 
-static char	**ft_abort(char **res)
+char	**ft_abort(char **res)
 {
 	int	i;
 
