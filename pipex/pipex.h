@@ -8,6 +8,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <errno.h>
 #include "libft.h"
 
 typedef struct s_pipex
@@ -20,7 +21,7 @@ typedef struct s_pipex
 }               t_pipex;
 
 void    pipex(t_pipex *p, char **env);
-int     ft_exit(int code, char *str);
+int     ft_exit(int code, char *str, t_pipex *p);
 char    *get_path(char **env);
 char	*parse_path(char *path, char *cmd);
 
