@@ -20,7 +20,7 @@ typedef struct s_pipex
     char *outfile;
 }               t_pipex;
 
-void    pipex(t_pipex *p, char **env);
+int    pipex(t_pipex *p, char **env);
 int     ft_exit(int code, char *str, t_pipex *p);
 char    *get_path(char **env);
 char	*parse_path(char *path, char *cmd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 14:01:23 by adesvall          #+#    #+#             */
-/*   Updated: 2021/07/21 12:04:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/21 13:32:23 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,4 @@ int	main(int argc, char **argv)
 	if (!p.path)
 		ft_exit(-1, "ERROR: can't get PATH environment variable", &p);
 	pipex(&p, environ);
-	ft_exit(0, "", &p);
 }
