@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 14:01:23 by adesvall          #+#    #+#             */
-/*   Updated: 2021/07/20 11:59:22 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/07/21 12:04:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 int ft_exit(int code, char *str, t_pipex *p)
 {
-	ft_abort(p->cmd1);
-	ft_abort(p->cmd2);
+	if (p->cmd1)
+		ft_abort(p->cmd1);
+	if (p->cmd2)
+		ft_abort(p->cmd2);
 	printf("%s\n", str);
 	exit(code);
 }
@@ -25,6 +27,7 @@ int	main(int argc, char **argv)
 	extern char	**environ;
 	t_pipex		p;
 
+	ft_bzero(&p, sizeof(t_pipex));
 	if (argc != 5)
 		ft_exit(-1, "Usage: ./pipex file1 cmd1 cmd2 file2", &p);
 	p.infile = argv[1];

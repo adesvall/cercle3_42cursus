@@ -27,13 +27,13 @@ echo "██╔═══╝ ██║██╔═══╝ ██╔══╝   
 echo "██║     ██║██║     ███████╗██╔╝ ██╗    ██║ ╚═╝ ██║███████╗██████╔╝██║╚██████╗"
 echo "╚═╝     ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝ ╚═════╝"
 printf "\n$S1$RESET\n"
-printf "$BLUE"; make -C all; printf "$RESET"
+printf "$BLUE"; make -C .. all; printf "$RESET"
 
 printf "$YELLOW$S1$RESET\n"
 printf "$PURPLE""test: < infile grep hello | awk '{count++} END {print count}' > outfile$RESET\n"
 printf "$PURPLE$S2$RESET\n"
 < test1 grep hello | awk '{count++} END {print count}' > test2 2> test2
-./pipex user1 "grep hello" "awk '{count++} END {print count}'" user2 2> user2
+../pipex user1 "grep hello" "awk '{count++} END {print count}'" user2 2> user2
 comp test2 user2
 rm -rf test2 user2
 
@@ -41,7 +41,7 @@ printf "$YELLOW$S1$RESET\n"
 printf "$PURPLE""test: < infile grep hello | awk \"{count++} END {print count}\" > outfile$RESET\n"
 printf "$PURPLE$S2$RESET\n"
 < test1 grep hello | awk "{count++} END {print count}" > test2 2> test2
-./pipex user1 "grep hello" "awk \"{count++} END {print count}\"" user2 2> user2
+../pipex user1 "grep hello" "awk \"{count++} END {print count}\"" user2 2> user2
 comp test2 user2
 rm -rf test2 user2
 
@@ -49,7 +49,7 @@ printf "$YELLOW$S1$RESET\n"
 printf "$PURPLE""test: < infile grep hello | awk '\"{count++} END {print count}\"' > outfile$RESET\n"
 printf "$PURPLE$S2$RESET\n"
 < test1 grep hello | awk '"{count++} END {print count}"' > test2 2> test2
-./pipex user1 "grep hello" "awk '\"{count++} END {print count}\"'" user2 2> user2
+../pipex user1 "grep hello" "awk '\"{count++} END {print count}\"'" user2 2> user2
 comp test2 user2
 rm -rf test2 user2
 
@@ -57,7 +57,7 @@ printf "$YELLOW$S1$RESET\n"
 printf "$PURPLE""test: < infile grep hello | awk \"'{count++} END {print count}'\" > outfile$RESET\n"
 printf "$PURPLE$S2$RESET\n"
 < test1 grep hello | awk "'{count++} END {print count}'" > test2 2> test2
-./pipex user1 "grep hello" "awk \"'{count++} END {print count}'\"" user2 2> user2
+../pipex user1 "grep hello" "awk \"'{count++} END {print count}'\"" user2 2> user2
 comp test2 user2
 rm -rf test2 user2
 

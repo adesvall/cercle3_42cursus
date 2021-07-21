@@ -4,7 +4,7 @@ SRCS		= srcs/main.c srcs/pipex.c srcs/utils.c
 
 OBJS		= ${SRCS:.c=.o}
 
-CFLAGS		= -Wall -Wextra -Werror -I. -Ilibft
+CFLAGS		= -Wall -Wextra -Werror -I. -Ilibft -fsanitize=address
 
 all:		${NAME}
 
