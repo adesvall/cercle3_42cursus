@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 14:01:23 by adesvall          #+#    #+#             */
-/*   Updated: 2021/09/06 22:48:39 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/09/08 16:45:35 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 int ft_exit(int code, char *str, t_pipex *p)
 {
-	if (p->cmd1)
-		ft_abort(p->cmd1);
-	if (p->cmd2)
-		ft_abort(p->cmd2);
+	if (p)
+	{
+		if (p->cmd1)
+			ft_abort(p->cmd1);
+		if (p->cmd2)
+			ft_abort(p->cmd2);
+		free(p->path1);
+		free(p->path2);
+	}
 	if (str)
+	{
 		printf("%s\n", str);
+		perror(str);
+	}
 	exit(code);
 }
 
