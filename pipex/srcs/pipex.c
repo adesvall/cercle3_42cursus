@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 14:01:31 by adesvall          #+#    #+#             */
-/*   Updated: 2021/09/09 13:32:41 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/09/09 15:39:05 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ void	inputfile(int fdpipe, t_pipex *p, char **env)
 
 	fd = open(p->infile, O_RDONLY);
 	if (fd == -1)
-		ft_exit(errno, "Error: can't open file", p->infile, NULL);
+		ft_exit(errno, p->infile, "can't open file", p);
+	p->path1 = parse_path(p->path, p->cmd1[0]);
 	if (!p->path1)
-		ft_exit(0, p->cmd1[0], "command not found", NULL);
+		ft_exit(0, p->cmd1[0], "command not found", p);
 	dup2(fd, STDIN_FILENO);
 	close(fd);
 	dup2(fdpipe, STDOUT_FILENO);
 	close(fdpipe);
 	if (execve(p->path1, p->cmd1, env) == -1)
-		ft_exit(errno, "Error: can't execute command", p->cmd1[0], NULL);
+		ft_exit(errno, "can't execute command", p->cmd1[0], p);
 }
 
 void	outputfile(int fdpipe, t_pipex *p, char **env)
@@ -36,15 +37,16 @@ void	outputfile(int fdpipe, t_pipex *p, char **env)
 	unlink(p->outfile);
 	fd = open(p->outfile, O_WRONLY | O_CREAT, 0644);
 	if (fd == -1)
-		ft_exit(1, "Error: can't create file", p->outfile, NULL);
+		ft_exit(1, p->outfile, "can't create file", p);
+	p->path2 = parse_path(p->path, p->cmd2[0]);
 	if (!p->path2)
-		ft_exit(127, p->cmd2[0], "command not found", NULL);
+		ft_exit(127, p->cmd2[0], "command not found", p);
 	dup2(fdpipe, STDIN_FILENO);
 	close(fdpipe);
 	dup2(fd, STDOUT_FILENO);
 	close(fd);
 	if (execve(p->path2, p->cmd2, env) == -1)
-		ft_exit(errno, "Error: can't execute command", p->cmd2[0], NULL);
+		ft_exit(errno, "can't execute command", p->cmd2[0], p);
 }
 
 void	launch_programs(t_pipex *p, int *pipefd, char **env)
@@ -53,7 +55,7 @@ void	launch_programs(t_pipex *p, int *pipefd, char **env)
 
 	pid = fork();
 	if (pid == -1)
-		ft_exit(errno, "Error", "fork", NULL);
+		ft_exit(errno, "Error", "fork", p);
 	if (pid == 0)
 	{
 		close(pipefd[0]);
@@ -77,8 +79,6 @@ void	pipex(t_pipex *p, char **env)
 	pid = fork();
 	if (pid == -1)
 		ft_exit(errno, "Error", "fork", p);
-	p->path1 = parse_path(p->path, p->cmd1[0]);
-	p->path2 = parse_path(p->path, p->cmd2[0]);
 	if (pid == 0)
 		launch_programs(p, pipefd, env);
 	else
