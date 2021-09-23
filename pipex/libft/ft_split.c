@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 14:40:18 by adesvall          #+#    #+#             */
-/*   Updated: 2021/07/19 16:44:56 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:13:01 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,16 @@ char	**ft_abort(char **res)
 	return (0);
 }
 
-char		**ft_split(const char *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char	**res;
 	int		i;
 	int		count;
 	int		word;
 
-	if ((!(count = ft_count(s, c)) && !s)
-					|| !(res = malloc(sizeof(char*) * (count + 1))))
+	res = malloc(sizeof(char *) * (ft_count(s, c) + 1));
+	if (!s || !res)
 		return (0);
-	ft_bzero(res, sizeof(char*) * (count + 1));
 	i = 0;
 	word = 0;
 	count = 0;
@@ -98,5 +97,6 @@ char		**ft_split(const char *s, char c)
 		if (s[i++] == c)
 			word = 0;
 	}
+	res[count] = NULL;
 	return (res);
 }

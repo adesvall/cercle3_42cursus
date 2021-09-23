@@ -6,13 +6,13 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 15:16:24 by adesvall          #+#    #+#             */
-/*   Updated: 2020/11/24 14:38:06 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:04:18 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 static	int	ft_isin(char c, const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -23,7 +23,7 @@ static	int	ft_isin(char c, const char *str)
 	return (0);
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int	res;
 	int	i;

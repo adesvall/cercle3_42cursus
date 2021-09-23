@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:32:22 by user42            #+#    #+#             */
-/*   Updated: 2020/11/21 21:50:19 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:07:40 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < n)
 	{
-		((char*)s)[i] = 0;
+		((char *)s)[i] = 0;
 		i++;
 	}
 }

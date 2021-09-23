@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 14:42:17 by adesvall          #+#    #+#             */
-/*   Updated: 2020/11/21 21:44:50 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:09:18 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	j = 0;
 	while (dst[j] && j < dstsize)

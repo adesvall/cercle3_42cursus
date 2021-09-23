@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 14:50:52 by adesvall          #+#    #+#             */
-/*   Updated: 2020/11/24 16:58:24 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:08:58 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 char	*ft_strnstr(char *s1, const char *s2, size_t len)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	j = 0;
 	if (*s2 == 0)
 		return (s1);
-	while (j + ft_strlen(s2) - 1 < ft_strlen(s1) && s1[j + ft_strlen(s2) - 1]
+	while (j + ft_strlen(s2) - 1 < ft_strlen(s1) && s1[j + ft_strlen(s2) - 1] \
 												&& j + ft_strlen(s2) <= len)
 	{
 		i = 0;

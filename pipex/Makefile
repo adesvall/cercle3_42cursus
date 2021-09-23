@@ -9,10 +9,10 @@ CFLAGS		= -Wall -Wextra -Werror -I. -Ilibft
 all:		${NAME}
 
 $(NAME):	${OBJS} libft/libft.a
-			gcc ${CFLAGS} -o ${NAME} ${OBJS} libft/libft.a
+			clang ${CFLAGS} -o ${NAME} ${OBJS} libft/libft.a
 
 .c.o:
-			gcc ${CFLAGS} -c $< -o ${<:.c=.o}
+			clang ${CFLAGS} -c $< -o ${<:.c=.o}
 
 libft/libft.a:
 			make -C libft

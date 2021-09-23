@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 14:01:31 by adesvall          #+#    #+#             */
-/*   Updated: 2021/09/09 15:39:05 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/09/23 16:33:26 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ void	outputfile(int fdpipe, t_pipex *p, char **env)
 {
 	int		fd;
 
-	unlink(p->outfile);
-	fd = open(p->outfile, O_WRONLY | O_CREAT, 0644);
+	fd = open(p->outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
-		ft_exit(1, p->outfile, "can't create file", p);
+		ft_exit(1, p->outfile, "can't open file", p);
 	p->path2 = parse_path(p->path, p->cmd2[0]);
 	if (!p->path2)
 		ft_exit(127, p->cmd2[0], "command not found", p);
@@ -74,6 +73,7 @@ void	pipex(t_pipex *p, char **env)
 	int		pipefd[2];
 	int		status;
 
+	status = 0;
 	if (pipe(pipefd))
 		ft_exit(errno, "Error", "pipe", p);
 	pid = fork();

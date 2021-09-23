@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 15:46:05 by adesvall          #+#    #+#             */
-/*   Updated: 2020/11/21 21:44:50 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:07:50 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void *res;
+	void	*res;
 
 	res = malloc(count * size);
 	if (res)

@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 16:26:12 by adesvall          #+#    #+#             */
-/*   Updated: 2020/11/22 22:01:00 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:10:54 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ char	*ft_itoa(int n)
 		return (0);
 	if (n == -2147483648)
 		return (ft_memcpy(str, "-2147483648", 12));
-	ncpy = (n < 0) ? -n : n;
+	ncpy = n;
+	if (n < 0)
+		ncpy = -n;
 	str[11] = 0;
 	i = 10;
 	while (ncpy > 9)

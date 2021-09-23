@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 19:17:51 by adesvall          #+#    #+#             */
-/*   Updated: 2020/11/24 17:15:23 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:06:34 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static t_list	*ft_fill_lst(t_list *lst, t_list *res,
 	return (res);
 }
 
-t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*res;
 	void	*newcontent;

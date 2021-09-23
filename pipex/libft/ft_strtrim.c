@@ -6,7 +6,7 @@
 /*   By: adesvall <adesvall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:09:45 by adesvall          #+#    #+#             */
-/*   Updated: 2020/11/24 16:59:05 by adesvall         ###   ########.fr       */
+/*   Updated: 2021/09/15 14:53:33 by adesvall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	int	ft_isin(char c, const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -25,7 +25,7 @@ static	int	ft_isin(char c, const char *str)
 	return (0);
 }
 
-char		*ft_strtrim(const char *s1, const char *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
 	size_t	start;
 	size_t	len;
